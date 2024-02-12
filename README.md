@@ -95,7 +95,7 @@ rm -rf ~/.cache/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.config/nvim
 <u>Разработчики:</u>
 * **Остапенко Максим** - [Krator3](https://github.com/krator3)
 * **Новгородцев Кирилл** - [Dev-cmyser](https://github.com/Dev-cmyser)
-* **Алексеев Бронислав** - [OkulusDev](https://github.com/OkulusDev)
+* **Алексеев Бронислав** - [Alexeev-engineer](https://github.com/alexeev-engineer)
 
 <u>Тестировщики</u>:
 *  **Поворознюк Михаил** - [archer7717](https://github.com/archer7717)
