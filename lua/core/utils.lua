@@ -3,10 +3,17 @@ _G.close_and_go_right = function()
 	local current_buf = vim.api.nvim_get_current_buf()
 	local buf_list = vim.fn.getbufinfo({ buflisted = 1 })
 
-	-- Если только один буфер, ничего не делаем
+	-- Если только один буфер, закрываем и создаем новый
 	if #buf_list == 1 then
+		vim.cmd("enew") -- открывает новый пустой буфер
+		vim.cmd("bdelete! " .. current_buf)
 		return
 	end
+
+	-- -- Если только один буфер, ничего не делаем
+	-- if #buf_list == 1 then
+	-- 	return
+	-- end
 
 	-- Находим следующий или предыдущий буфер
 	local next_bufnr

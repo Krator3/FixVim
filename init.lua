@@ -1,3 +1,5 @@
+vim.loader.enable()
+
 -- Базовая настройка
 require("core.plugins")
 require("core.color")
