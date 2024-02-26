@@ -12,9 +12,6 @@
 -- Учтите, что клавишы, назначенные системой, будут главнее => сработает системная комбинация вместо установленной здесь
 -- Русские сочетания клавиш добавляются здесь (для сохранения удобной структуры), хотя никто не запрещает создавать их в lua/core/mappings.lua
 
-vim.keymap.set("n", "<C-ц>", ":w<CR>") -- Сохранить файл
-vim.keymap.set("n", "<C-й>", ":q<CR>") -- Закрыть Neovim
-
 -- Normal mode
 vim.keymap.set("i", "оо", "<Esc>")
 
@@ -69,8 +66,8 @@ vim.keymap.set("n", "к", "r")
 vim.keymap.set("n", "<leader>ч", ":BufferLineSortByTabs<CR>:BufferLineCloseRight<CR>") -- Закрытие всех буферов
 vim.keymap.set("n", "<leader>Ч", ":BufferLinePickClose<CR>") -- Закрытие одного буфера
 vim.api.nvim_set_keymap("n", "<M-с>", ":lua _G.close_and_go_right()<CR>", { noremap = true, silent = true }) -- подробнее в lua/core/utils.lua
-vim.keymap.set("n", "<C-т>", ":BufferLineMoveNext<CR>") -- переместить вкладку вперед
-vim.keymap.set("n", "<C-з>", ":BufferLineMovePrev<CR>") -- переместить вкладку назад
+vim.keymap.set("n", "<C-т>", ":BufferLineMoveNext<CR>") -- Переместить вкладку вперед
+vim.keymap.set("n", "<C-з>", ":BufferLineMovePrev<CR>") -- Переместить вкладку назад
 
 -- Выделение
 vim.keymap.set("n", "м", "v")
@@ -80,7 +77,7 @@ vim.keymap.set("v", "М", "V")
 
 -- Файловый менеджер
 vim.keymap.set("n", "<M-у>", ":Neotree toggle float<CR>") -- Открыть/Закрыть файловое дерево в плавающем режиме
-vim.keymap.set("n", "<M-в>", ":Neotree toggle left<CR>") -- -- Открыть/Закрыть файловое дерево слева сбоку
+vim.keymap.set("n", "<M-в>", ":Neotree toggle left<CR>") -- Открыть/Закрыть файловое дерево слева сбоку
 -- vim.keymap.set("n", "<M-т>", ":Neotree toggle<CR>") -- Открыть/Закрыть файловое дерево (используется последний активный режим)
 vim.keymap.set("n", "<leader>ы", ":Neotree show reveal<CR>") -- Показать файл в дереве (не работает в плавающем режиме)
 
@@ -98,13 +95,8 @@ vim.keymap.set("v", "П", "G")
 
 --[[ Если строка визуально разбита на несколько строк, то курсор перепрыгнет через них, так как считает, что это одна строка
 При помощи настройки ниже курсор будет перемещаться по ним будто это разные строки --]]
-vim.keymap.set('n', 'о', "v:count == 0 ? 'gj' : 'j'", {
-  expr = true,
-})
-vim.keymap.set('n', 'л', "v:count == 0 ? 'gk' : 'k'", {
-  expr = true,
-})
-
+vim.keymap.set('n', 'о', "v:count == 0 ? 'gj' : 'j'", {expr = true,})
+vim.keymap.set('n', 'л', "v:count == 0 ? 'gk' : 'k'", {expr = true,})
 
 -- Терминал
 vim.keymap.set("n", "<M-е>", ":ToggleTerm direction=float<CR>") -- Открыть терминал в плавающем режиме

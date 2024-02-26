@@ -14,9 +14,6 @@ vim.g.mapleader = " "
 -- Учтите, что клавишы, назначенные системой, будут главнее => сработает системная комбинация вместо установленной здесь
 -- Русские сочетания клавиш добавляются в lua/core/ru_mappings.lua (для сохранения удобной структуры), хотя никто не запрещает создавать их здесь
 
-vim.keymap.set("n", "<C-w>", ":w<CR>") -- Сохранить файл
-vim.keymap.set("n", "<C-q>", ":q<CR>") -- Закрыть Neovim
-
 -- Навигация
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>") -- Переключиться на верхнее окно
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>") -- Переключиться на нижнее окно
@@ -27,28 +24,28 @@ vim.api.nvim_set_keymap("n", "<M-c>", ":lua _G.close_and_go_right()<CR>", { nore
 
 -- Файловый менеджер
 vim.keymap.set("n", "<M-e>", ":Neotree toggle float<CR>") -- Открыть/Закрыть файловое дерево в плавающем режиме
-vim.keymap.set("n", "<M-d>", ":Neotree toggle left<CR>") -- -- Открыть/Закрыть файловое дерево слева сбоку
+vim.keymap.set("n", "<M-d>", ":Neotree toggle left<CR>") -- Открыть/Закрыть файловое дерево слева сбоку
 -- vim.keymap.set("n", "<M-n>", ":Neotree toggle<CR>") -- Открыть/Закрыть файловое дерево (используется последний активный режим)
 vim.keymap.set("n", "<leader>s", ":Neotree show reveal<CR>") -- Показать файл в дереве (не работает в плавающем режиме)
 
 -- Разделение экрана
-vim.keymap.set("n", "<M-v>", ":vsplit<CR>") -- разделить экран по вертикали (окна снизу и сверху символа <->)
-vim.keymap.set("n", "<M-h>", ":split<CR>") -- разделить экран по горизонтали (окно|окно)
+vim.keymap.set("n", "<M-v>", ":vsplit<CR>") -- Разделить экран по вертикали (окна снизу и сверху символа <->)
+vim.keymap.set("n", "<M-h>", ":split<CR>") -- Разделить экран по горизонтали (окно|окно)
 
 -- Удаление буфера
 vim.keymap.set('n', '<leader>X', ':BufferLinePickClose<CR>')
 vim.keymap.set("n", "<leader>x", ":BufferLineSortByTabs<CR>:BufferLineCloseRight<CR>")
 
-vim.keymap.set("i", "jj", "<Esc>")
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("i", "jj", "<Esc>") -- Аналог для клавишы <Esc>, чтобы не тянуть руку в даль клавиатуры
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>") -- Отключить подсветку для найденных объектов. Для поиска используется символ '/'
 
 -- Работа с вкладками (буферами)
-vim.keymap.set("n", "<C-n>", ":BufferLineMoveNext<CR>") -- переместить вкладку вперед
-vim.keymap.set("n", "<C-p>", ":BufferLineMovePrev<CR>") -- переместить вкладку назад
-vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>") -- следующий буфер
-vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>") -- предыдущий буфер
--- vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>:Neotree left show reveal<CR>") -- следующий буфер + показать файл, на который переместились
--- vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>:Neotree left show reveal<CR>") -- предыдущий буфер + показать файл, на который переместились
+vim.keymap.set("n", "<C-n>", ":BufferLineMoveNext<CR>") -- Переместить вкладку вперед
+vim.keymap.set("n", "<C-p>", ":BufferLineMovePrev<CR>") -- Переместить вкладку назад
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>") -- Следующий буфер
+vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>") -- Предыдущий буфер
+-- vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>:Neotree left show reveal<CR>") -- Следующий буфер + показать файл, на который переместились
+-- vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>:Neotree left show reveal<CR>") -- Предыдущий буфер + показать файл, на который переместились
 
 -- Терминал
 vim.keymap.set("n", "<M-t>", ":ToggleTerm direction=float<CR>") -- Открыть терминал в плавающем режиме
@@ -57,12 +54,8 @@ vim.keymap.set("n", "<s-t>", function() require("trouble").toggle() end) -- От
 
 --[[ Если строка визуально разбита на несколько строк, то курсор перепрыгнет через них, так как считает, что это одна строка
 При помощи настройки ниже курсор будет перемещаться по ним будто это разные строки --]]
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
-  expr = true,
-})
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
-  expr = true,
-})
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true,})
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true,})
 
 --[[
 Включить/Выключить подсветку Treesitter, то есть исп. подсветку от Treesitter или встроенную от LSP
