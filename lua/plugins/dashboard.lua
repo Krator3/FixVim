@@ -59,7 +59,7 @@ require("dashboard").setup{
 				desc_hl = "String",
 				-- key = "",
 				key_hl = "Number",
-				action = ":q",
+				action = ":qa!",
 			},
 
 		},
