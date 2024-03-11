@@ -20,6 +20,12 @@ vim.keymap.set("n", "<C-j>", ":wincmd j<CR>") -- Переключиться на
 vim.keymap.set("n", "<C-h>", ":wincmd h<CR>") -- Переключиться на левое окно
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>") -- Переключиться на правое окно
 
+-- Перемещение
+vim.keymap.set("n", "<C-K>", ":wincmd K<CR>") -- Переместить окно вверх
+vim.keymap.set("n", "<C-J>", ":wincmd J<CR>") -- Переместить окно вниз
+vim.keymap.set("n", "<C-H>", ":wincmd H<CR>") -- Переместить окно влево
+vim.keymap.set("n", "<C-L>", ":wincmd L<CR>") -- Переместить окно вправо
+
 vim.api.nvim_set_keymap("n", "<M-c>", ":lua _G.close_and_go_right()<CR>", { noremap = true, silent = true }) -- подробнее в lua/core/utils.lua
 
 -- Файловый менеджер
