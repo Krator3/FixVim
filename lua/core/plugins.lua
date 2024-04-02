@@ -69,4 +69,5 @@ require("lazy").setup({
 			url_open.setup ({})
 		end,
 	},
+	{ "willothy/moveline.nvim", build = "make" },
 })

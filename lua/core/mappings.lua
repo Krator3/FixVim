@@ -75,8 +75,14 @@ vim.keymap.set("n", "<leader>ct", ":ColorizerToggle<CR>") -- Включить/О
 vim.keymap.set("n", "<S-Down>", ":m+1<CR>") -- Переместить строку под курсором на одну строку вниз
 vim.keymap.set("n", "<S-Up>", ":m-2<CR>") -- Переместить строку под курсором на одну строку вверх
 
-vim.keymap.set("n", "<С-k>", ":m+1<CR>") -- Переместить строку под курсором на одну строку вниз
-vim.keymap.set("n", "<С-j>", ":m-2<CR>") -- Переместить строку под курсором на одну строку вверх
+-- vim.keymap.set("n", "<С-k>", ":m+1<CR>") -- Переместить строку под курсором на одну строку вниз
+-- vim.keymap.set("n", "<С-j>", ":m-2<CR>") -- Переместить строку под курсором на одну строку вверх
+
+local moveline = require('moveline') -- умное расширение для перемещения кода и текста
+vim.keymap.set('n', '<C-k>', moveline.up) -- Переместить строку под курсором на одну строку вниз
+vim.keymap.set('n', '<C-j>', moveline.down) -- Переместить строку под курсором на одну строку вверх
+vim.keymap.set('v', '<C-k>', moveline.block_up) -- Переместить строку под курсором на одну строку вниз (блок)
+vim.keymap.set('v', '<C-j>', moveline.block_down) -- Переместить строку под курсором на одну строку вверх (блок)
 
 vim.keymap.set("n", "<M-CR>", ":URLOpenUnderCursor<CR>") -- Открыть URL под курсором
 vim.keymap.set("n", "<leader>u", ":URLOpenHighlightAll<CR>") -- Выделить все URL в текущем буфере
