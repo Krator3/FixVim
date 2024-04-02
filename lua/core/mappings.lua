@@ -77,3 +77,7 @@ vim.keymap.set("n", "<S-Up>", ":m-2<CR>") -- Переместить строку
 
 vim.keymap.set("n", "<С-k>", ":m+1<CR>") -- Переместить строку под курсором на одну строку вниз
 vim.keymap.set("n", "<С-j>", ":m-2<CR>") -- Переместить строку под курсором на одну строку вверх
+
+vim.keymap.set("n", "<M-CR>", ":URLOpenUnderCursor<CR>") -- Открыть URL под курсором
+vim.keymap.set("n", "<leader>u", ":URLOpenHighlightAll<CR>") -- Выделить все URL в текущем буфере
+vim.keymap.set("n", "<leader>c", ":URLOpenHighlightAllClear<CR>") -- Очистить все выделенные URL в текущем буфере
