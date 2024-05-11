@@ -21,11 +21,11 @@ FixVim — это конфигурация NeoVim для Linux, написанн
 Установка необходимых пакетов в:
 
 ArchLinux:
-```shell
+```bash
 sudo pacman -Syu --needed git neovim xclip wl-clipboard nodejs npm
 ```
 AltLinux:
-```shell
+```bash
 su -
 apt-get install git neovim xclip wl-clipboard nodejs npm gcc
 ```
