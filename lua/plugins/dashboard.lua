@@ -43,7 +43,7 @@ require("dashboard").setup{
 			},
 
 			{
-				icon = "🗲 ",
+				icon = "↯ ",
 				icon_hl = "Title",
 				desc = "Lazy",
 				desc_hl = "String",
