@@ -9,7 +9,7 @@ require('lualine').setup({
 
     -- Типы файлов, для которых не будет отображаться панель <lualine>
     disabled_filetypes = {
-      statusline = {'neo-tree'},
+      statusline = {'neo-tree','dashboard'},
       winbar = {},
     },
 
