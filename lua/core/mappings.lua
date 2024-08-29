@@ -1,7 +1,5 @@
-vim.g.mapleader = " "
-
 --[[
-<leader>буква(ы) = Space (пробел)
+<leader>буква(ы) = Space (пробел) P.S: Переопределить можно в параметре vim.g.mapleader, который находится в lua/core/lazy.lua
 <M-буква> = <A-буква> = Meta (Alt) (также можно исп. <m-буква> вместо <M-буква>)
 <C-буква> = Ctrl
 <S-буква> или <s-буква> = Shift (русские буквы писать заглавной и без <>)
@@ -42,7 +40,7 @@ vim.keymap.set("n", "<C-h>", ":split<CR>") -- Разделить экран по
 vim.keymap.set('n', '<leader>X', ':BufferLinePickClose<CR>')
 vim.keymap.set("n", "<leader>x", ":BufferLineSortByTabs<CR>:BufferLineCloseRight<CR>")
 
-vim.keymap.set("i", "jj", "<Esc>") -- Аналог для клавишы <Esc>, чтобы не тянуть руку в даль клавиатуры
+vim.keymap.set("i", "jj", "<Esc>") -- Аналог для клавишы <Esc>
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>") -- Отключить подсветку для найденных объектов. Для поиска используется символ '/'
 
 -- Работа с вкладками (буферами)
@@ -53,12 +51,7 @@ vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>") -- Предыдущи
 -- vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>:Neotree left show reveal<CR>") -- Следующий буфер + показать файл, на который переместились
 -- vim.keymap.set("n", "<s-Tab>", ":BufferLineCyclePrev<CR>:Neotree left show reveal<CR>") -- Предыдущий буфер + показать файл, на который переместились
 
--- Терминал
-vim.keymap.set("n", "<M-t>", ":ToggleTerm direction=float<CR>") -- Открыть терминал в плавающем режиме
-
-vim.keymap.set("n", "<s-t>", function() require("trouble").toggle() end) -- Открыть/Закрыть список проблем (расширение <Trouble>)
-
---[[ Если строка визуально разбита на несколько строк, то курсор перепрыгнет через них, так как считает, что это одна строка
+--[[ Если строка визуально разбита на несколько строк, то курсор перепрыгнет через них, так как считает, что это одна строка.
 При помощи настройки ниже курсор будет перемещаться по ним будто это разные строки --]]
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {expr = true,})
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {expr = true,})

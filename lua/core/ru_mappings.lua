@@ -1,5 +1,5 @@
 --[[
-<leader>буква(ы) = Space (пробел)
+<leader>буква(ы) = Space (пробел) P.S: Переопределить можно в параметре vim.g.mapleader, который находится в lua/core/lazy.lua
 <M-буква> = <A-буква> = Meta (Alt) (также можно исп. <m-буква> вместо <M-буква>)
 <C-буква> = Ctrl
 <S-буква> или <s-буква> = Shift (русские буквы писать заглавной и без <>)
@@ -107,11 +107,6 @@ vim.keymap.set("v", "П", "G")
 При помощи настройки ниже курсор будет перемещаться по ним будто это разные строки --]]
 vim.keymap.set('n', 'о', "v:count == 0 ? 'gj' : 'j'", {expr = true,})
 vim.keymap.set('n', 'л', "v:count == 0 ? 'gk' : 'k'", {expr = true,})
-
--- Терминал
-vim.keymap.set("n", "<M-е>", ":ToggleTerm direction=float<CR>") -- Открыть терминал в плавающем режиме
-
-vim.keymap.set("n", "Е", function() require("trouble").toggle() end) -- Открыть/Закрыть список проблем (расширение <Trouble>)
 
 --[[
 Включить/Выключить подсветку Treesitter, то есть исп. подсветку от Treesitter или встроенную от LSP
