@@ -2,7 +2,7 @@ return {
     "hrsh7th/nvim-cmp",
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-nvim-lua", -- подумать нужно ли
+		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
@@ -82,7 +82,7 @@ return {
                 {
                     { name = 'nvim_lsp' },
                     { name = 'nvim_lsp_signature_help' },
-                    { name = 'nvim_lua' }, -- подумать нужно ли
+                    { name = 'nvim_lua' },
                     { name = "luasnip" },
                     { name = 'buffer' },
                     { name = 'path' },
@@ -95,7 +95,7 @@ return {
 				vim_item.menu = ({
 					buffer = "[Buffer]",
 					nvim_lsp = "[LSP]",
-					luasnip = "[LuaSnip]", -- подумать нужно ли
+					luasnip = "[LuaSnip]",
 					nvim_lua = "[NvimAPI]",
 					path = "[Path]",
 				})[entry.source.name]
