@@ -1,19 +1,24 @@
 return {
     "hrsh7th/nvim-cmp",
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-nvim-lua",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"hrsh7th/cmp-nvim-lsp-signature-help",
+      {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-nvim-lua",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-cmdline",
+        "hrsh7th/cmp-nvim-lsp-signature-help",
+      },
+	  {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "saadparwaiz1/cmp_luasnip" },
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+      },
 	},
 
 	config = function()
-        local cmp = require'cmp'
-        vim.opt.completeopt = { "menu", "menuone", "noselect" }
+        local cmp = require("cmp")
+        require("luasnip.loaders.from_vscode").lazy_load()
 
         local kind_icons = {
             Text = " ",
@@ -77,17 +82,24 @@ return {
                 end, {"i", "s"})
             }),
 
+            completion = {
+                completeopt = "menu,menuone,noselect",
+            },
+
             -- Источники для подсказок (порядок имеет значение)
-            sources = cmp.config.sources({
-                {
-                    { name = 'nvim_lsp' },
-                    { name = 'nvim_lsp_signature_help' },
-                    { name = 'nvim_lua' },
-                    { name = "luasnip" },
-                    { name = 'buffer' },
-                    { name = 'path' },
-                },
-            }),
+            sources = {
+                { name = 'nvim_lsp' },
+                { name = 'nvim_lsp_signature_help' },
+                { name = 'nvim_lua' },
+                { name = "luasnip" },
+                { name = 'buffer' },
+                { name = 'path' },
+            },
+
+            confirm_opts = {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = false,
+            },
 
             formatting = {
 			format = function(entry, vim_item)
@@ -113,15 +125,18 @@ return {
         -- Используйте cmdline и источник пути для ':' (если вы включили `native_menu`, это больше не будет работать)
         cmp.setup.cmdline(':', {
             mapping = cmp.mapping.preset.cmdline(),
-            sources = cmp.config.sources({{ name = 'path'}}, {{ name = 'cmdline'}})
+            sources = cmp.config.sources({{ name = 'path'}}, {{ name = 'cmdline'}}),
+            matching = { disallow_symbol_nonprefix_matching = false },
         })
+
+        -- Подключение LSP для работы автокомплита
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        -- Замените <YOUR_LSP_SERVER> на нужный lsp-сервер (для каждого нужно создавать отдельный параметр)
+        -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup{capabilities = capabilities}
+        require('lspconfig')['pyright'].setup{capabilities = capabilities}
 
         -- Подстановка скобок к подсказкам, которым это нужно (дополнение для nvim-autopairs)
         local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-        cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-        )
-
+        cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
 	end,
 }
