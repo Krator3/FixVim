@@ -41,7 +41,9 @@ vim.keymap.set('n', '<leader>X', ':BufferLinePickClose<CR>')
 vim.keymap.set("n", "<leader>x", ":BufferLineSortByTabs<CR>:BufferLineCloseRight<CR>")
 
 vim.keymap.set("i", "jj", "<Esc>") -- Аналог для клавишы <Esc>
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>") -- Отключить подсветку для найденных объектов. Для поиска используется символ '/'
+-- Выключить подсветку найденных объектов. Для поиска используется символ /. n = следующее совпадение, N = предыдущее совпадение
+vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", ":noh<CR>")
 
 -- Работа с вкладками (буферами)
 vim.keymap.set("n", "<C-n>", ":BufferLineMoveNext<CR>") -- Переместить вкладку вперед
